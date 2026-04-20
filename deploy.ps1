@@ -1,12 +1,12 @@
-# Déploiement Energie Access (VPS + PM2) — adaptez les variables à votre infrastructure.
-$VPS_IP = "VOTRE_IP_VPS"
-$VPS_KEY = "$env:USERPROFILE\.ssh\id_rsa"
-$VPS_PATH = "/var/www/dev.energieaccess.fr"
-$VPS_PM2_APP = "energieaccess-dev"
+# Déploiement Energie Access (VPS + PM2)
+# Site : https://energie.formationaccess.fr
+$VPS_HOST = "formationaccess-vps"          # alias défini dans ~/.ssh/config
+$VPS_PATH = "/var/www/energie.formationaccess.fr"
+$VPS_PM2_APP = "energieaccess"
 
 function Invoke-Remote {
     param([string]$RemoteCommand)
-    & ssh -i $VPS_KEY -o ConnectTimeout=15 "deploy@$VPS_IP" $RemoteCommand
+    & ssh -o ConnectTimeout=15 $VPS_HOST $RemoteCommand
     return $LASTEXITCODE
 }
 
@@ -42,5 +42,5 @@ if ($code -ne 0) { Write-Host "Erreur PM2." -ForegroundColor Red; exit 1 }
 
 Write-Host ""
 Write-Host "=== TERMINÉ ===" -ForegroundColor Cyan
-Write-Host "Staging : https://dev.energieaccess.fr" -ForegroundColor Green
+Write-Host "URL : https://energie.formationaccess.fr" -ForegroundColor Green
 Write-Host ""
