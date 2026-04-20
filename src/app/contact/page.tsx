@@ -20,7 +20,7 @@ export default function ContactPage() {
         subtitle="Étude gratuite, rappel téléphonique ou message libre — choisissez le canal qui vous convient. Réponse sous 24 h ouvrées."
       />
 
-      <section className="py-16 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-10 lg:gap-14 items-start">
             {/* Left : coordonnées */}

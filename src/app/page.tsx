@@ -368,7 +368,7 @@ export default function HomePage() {
       {/* ─────────────── SERVICES — EDITORIAL ROWS ─────────────── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-16">
             <SectionTitle
               eyebrow="Nos services"
               title="Électricité, gaz, résiliation, CEE — un seul interlocuteur."
@@ -391,7 +391,7 @@ export default function HomePage() {
                 <AnimateOnScroll key={s.slug}>
                   <Link
                     href={`/services#${s.slug}`}
-                    className="group grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 py-8 lg:py-10 items-center hover:bg-bg-alt/40 transition-colors -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-2xl"
+                    className="group grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 py-9 lg:py-12 items-center hover:bg-bg-alt/40 transition-colors -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-2xl"
                   >
                     <div className="lg:col-span-1">
                       <span className="font-display text-text-muted text-sm tabular-nums">
@@ -407,7 +407,7 @@ export default function HomePage() {
                       <h3 className="font-display font-bold text-ink text-[1.4rem] lg:text-[1.6rem] tracking-tight leading-tight">
                         {s.title}
                       </h3>
-                      <p className="mt-2 text-text-light leading-relaxed max-w-2xl">{s.short}</p>
+                      <p className="mt-3 text-text-light leading-relaxed max-w-2xl">{s.short}</p>
                     </div>
                     <div className="lg:col-span-4 flex lg:justify-end">
                       <span className="inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-primary group-hover:text-accent transition-colors">

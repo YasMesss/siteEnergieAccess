@@ -76,7 +76,7 @@ export default function AProposPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 lg:py-24 bg-bg-alt">
+      <section className="py-20 lg:py-28 bg-bg-alt">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll>
             <div className="max-w-2xl">
@@ -108,7 +108,7 @@ export default function AProposPage() {
       </section>
 
       {/* Location */}
-      <section className="py-20 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-ink text-white p-8 lg:p-12 grain">
             <div className="absolute inset-0 grid-lines opacity-40" aria-hidden />

@@ -63,8 +63,8 @@ export default function ServicesPage() {
         subtitle="De l’audit de factures à la signature électronique, nous pilotons l’ensemble du dossier — en gardant la décision dans vos mains."
       />
 
-      <section className="py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 lg:space-y-24">
+      <section className="py-20 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-28">
           {services.map((s, i) => {
             const Icon = icons[s.slug] ?? Zap;
             const reversed = i % 2 === 1;

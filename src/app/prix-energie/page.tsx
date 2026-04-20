@@ -40,7 +40,7 @@ export default function PrixEnergiePage() {
         subtitle="Day-ahead, TRV, ARENH, indexations PEG / EEX… Nous suivons les indicateurs de marché au quotidien pour ajuster nos recommandations contractuelles."
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="pt-20 lg:pt-28 pb-10 lg:pb-14">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll>
             <EnergyPriceWidget />
@@ -48,7 +48,7 @@ export default function PrixEnergiePage() {
         </div>
       </section>
 
-      <section className="pb-16 lg:pb-24">
+      <section className="pb-20 lg:pb-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
             {cards.map(({ icon: Icon, title, desc }, i) => (

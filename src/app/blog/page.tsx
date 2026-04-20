@@ -21,7 +21,7 @@ export default function BlogPage() {
         subtitle="TRV, ARENH, marché de gros, efficacité, CEE, décret tertiaire — on prend le temps d’expliquer ce qui impacte votre budget énergie."
       />
 
-      <section className="py-16 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {featured && (
             <AnimateOnScroll>

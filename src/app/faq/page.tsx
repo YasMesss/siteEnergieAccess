@@ -34,7 +34,7 @@ export default function FAQPage() {
         subtitle="Les réponses ci-dessous sont générales. Votre situation (PDL / PCE, puissance, type d’offre) peut modifier les options disponibles — appelez-nous pour une lecture personnalisée."
       />
 
-      <section className="py-16 lg:py-24">
+      <section className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-8">
             <HelpCircle className="w-4 h-4 text-primary" />
