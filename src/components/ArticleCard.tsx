@@ -51,8 +51,8 @@ export default function ArticleCard({
         <p className={`text-text-light leading-relaxed flex-1 ${featured ? "mt-4 text-[1rem]" : "mt-3 text-[0.92rem] line-clamp-3"}`}>
           {article.excerpt}
         </p>
-        <div className={`flex items-center justify-between gap-3 pt-5 mt-5 border-t border-line ${featured ? "lg:pt-6 lg:mt-6" : ""}`}>
-          <div className="flex items-center gap-3 text-xs text-text-muted">
+        <div className={`flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-5 mt-5 border-t border-line ${featured ? "lg:pt-6 lg:mt-6" : ""}`}>
+          <div className="min-w-0 flex items-center gap-3 text-xs text-text-muted">
             <time dateTime={article.publishedAt}>{date}</time>
             <span className="h-3 w-px bg-line" />
             <span className="flex items-center gap-1">
@@ -60,7 +60,7 @@ export default function ArticleCard({
               {article.readingTime} min
             </span>
           </div>
-          <span className="flex items-center gap-1 text-[0.82rem] font-semibold text-primary group-hover:text-accent transition-colors">
+          <span className="shrink-0 flex items-center gap-1 text-[0.82rem] font-semibold text-primary group-hover:text-accent transition-colors">
             Lire
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>

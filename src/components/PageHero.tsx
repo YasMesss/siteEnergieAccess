@@ -21,7 +21,7 @@ export default function PageHero({ eyebrow, title, subtitle }: PageHeroProps) {
             {eyebrow}
           </span>
         )}
-        <h1 className="mt-5 font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight max-w-4xl">
+        <h1 className="mt-5 font-display font-extrabold text-3xl sm:text-4xl lg:text-[3.4rem] leading-tight sm:leading-[1.05] tracking-tight max-w-4xl">
           {title}
         </h1>
         {subtitle && (

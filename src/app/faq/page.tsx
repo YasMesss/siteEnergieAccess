@@ -44,7 +44,7 @@ export default function FAQPage() {
           </div>
           <FAQAccordion items={faqItems} />
 
-          <div className="mt-14 relative overflow-hidden rounded-2xl bg-ink text-white p-8 lg:p-10 grain">
+          <div className="mt-14 relative overflow-hidden rounded-2xl bg-ink text-white p-6 sm:p-8 lg:p-10 grain">
             <div className="absolute inset-0 grid-lines opacity-40" aria-hidden />
             <div className="absolute -top-24 -right-24 w-[300px] h-[300px] rounded-full bg-accent/25 blur-3xl" />
             <div className="relative z-10 flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">

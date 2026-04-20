@@ -52,8 +52,8 @@ export default function StatsBar() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line rounded-2xl border border-line bg-white">
       {stats.map((s) => (
-        <div key={s.label} className="p-7 sm:p-8">
-          <div className="font-display text-4xl sm:text-5xl font-extrabold gradient-text leading-none tracking-tight">
+        <div key={s.label} className="p-5 sm:p-7 md:p-8">
+          <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold gradient-text leading-none tracking-tight">
             <AnimatedNumber value={s.value} />
           </div>
           <p className="mt-3 text-sm text-text-light leading-relaxed max-w-[20ch]">{s.label}</p>

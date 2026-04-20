@@ -5,7 +5,7 @@ const icons = [FileText, FileSignature, LineChart, Scale, PenLine, LifeBuoy];
 
 export default function ProcessTimeline() {
   return (
-    <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-y-10 lg:gap-y-0 gap-x-4">
+    <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-y-6 sm:gap-y-8 lg:gap-y-0 gap-x-4">
       {processSteps.map((s, i) => {
         const Icon = icons[i] ?? FileText;
         const isLast = i === processSteps.length - 1;

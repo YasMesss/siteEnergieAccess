@@ -44,7 +44,7 @@ export default function NewsletterForm() {
       {status === "error" && (
         <p className="text-red-400 text-xs">Erreur. Veuillez réessayer.</p>
       )}
-      <form onSubmit={handleSubmit} className="flex gap-2 relative">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 relative">
         <div aria-hidden="true" className="absolute -left-[9999px] opacity-0 h-0 overflow-hidden">
           <input type="text" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
         </div>
@@ -56,15 +56,16 @@ export default function NewsletterForm() {
           placeholder="votre@email.fr"
           aria-label="Adresse email pour la newsletter"
           maxLength={254}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 text-sm focus:ring-2 focus:ring-accent/30 focus:border-accent/40 outline-none transition-all"
+          className="min-w-0 flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 text-sm focus:ring-2 focus:ring-accent/30 focus:border-accent/40 outline-none transition-all"
         />
         <button
           type="submit"
           disabled={status === "loading"}
           aria-label="S'inscrire à la newsletter"
-          className="px-4 py-2.5 bg-accent hover:bg-accent-hover text-white rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 disabled:opacity-70"
+          className="w-full sm:w-auto justify-center px-4 py-2.5 bg-accent hover:bg-accent-hover text-white rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 disabled:opacity-70"
         >
           {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+          <span className="sm:hidden">S&apos;inscrire</span>
         </button>
       </form>
     </div>

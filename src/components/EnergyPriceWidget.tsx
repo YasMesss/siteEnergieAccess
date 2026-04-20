@@ -89,7 +89,7 @@ export default function EnergyPriceWidget({ compact = false }: EnergyPriceWidget
       </div>
 
       <div className="flex items-baseline gap-2 mb-6">
-        <span className="font-display font-extrabold text-ink text-5xl lg:text-6xl tabular-nums tracking-tight">
+        <span className="font-display font-extrabold text-ink text-4xl sm:text-5xl lg:text-6xl tabular-nums tracking-tight">
           {spotEurMwh[spotEurMwh.length - 1]?.toFixed(1)}
         </span>
         <span className="text-lg font-semibold text-text-light">€/MWh</span>

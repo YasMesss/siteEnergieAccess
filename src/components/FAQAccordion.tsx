@@ -32,11 +32,11 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
               aria-controls={`faq-panel-${i}`}
               id={`faq-header-${i}`}
             >
-              <span className="flex items-center gap-4">
-                <span className="hidden sm:inline-flex font-display font-bold text-text-muted text-sm tabular-nums">
+              <span className="flex items-center gap-4 min-w-0 flex-1">
+                <span className="hidden sm:inline-flex shrink-0 font-display font-bold text-text-muted text-sm tabular-nums">
                   0{i + 1}
                 </span>
-                <span className="font-display font-semibold text-ink text-[1.02rem] leading-snug">
+                <span className="min-w-0 font-display font-semibold text-ink text-[0.95rem] sm:text-[1.02rem] leading-snug">
                   {item.q}
                 </span>
               </span>

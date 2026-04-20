@@ -6,7 +6,10 @@ import { company } from "@/lib/data";
 
 export default function MobileStickyBar() {
   return (
-    <div className="fixed bottom-3 left-3 right-3 z-40 lg:hidden">
+    <div
+      className="fixed left-3 right-3 z-40 lg:hidden"
+      style={{ bottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+    >
       <div className="glass flex gap-2 p-2 rounded-2xl">
         <a
           href={company.phoneTel}

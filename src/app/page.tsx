@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Shield,
+  ShieldCheck,
   LineChart,
   Headphones,
   Sparkles,
@@ -12,6 +13,9 @@ import {
   Factory,
   Store,
   FileSignature,
+  FileSearch,
+  ClipboardCheck,
+  TrendingDown,
   Zap,
   Quote,
   Lock,
@@ -79,14 +83,14 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-4 max-w-lg text-sm">
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-lg text-sm">
                 {[
                   { k: "0 €", v: "Frais cachés" },
                   { k: "4 min", v: "Pour nous transmettre vos factures" },
                   { k: "48 h", v: "Pour votre comparatif" },
                 ].map((x) => (
                   <div key={x.k} className="border-l border-white/15 pl-3">
-                    <div className="font-display font-bold text-white text-xl tabular-nums">{x.k}</div>
+                    <div className="font-display font-bold text-white text-lg sm:text-xl tabular-nums">{x.k}</div>
                     <div className="text-white/55 text-[0.78rem] mt-1 leading-snug">{x.v}</div>
                   </div>
                 ))}
@@ -96,55 +100,85 @@ export default function HomePage() {
             {/* Right : bento */}
             <div className="lg:col-span-5">
               <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
-                {/* Large mock card */}
+                {/* Anatomy of the bill — pedagogical card */}
                 <div className="col-span-2 relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-5 sm:p-6 backdrop-blur-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="chip bg-accent/15 text-accent border border-accent/25">
-                      <FileSignature className="w-3.5 h-3.5" />
-                      Estimation budget
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="chip bg-white/10 text-white/80 border border-white/15 self-start">
+                      <FileSearch className="w-3.5 h-3.5 text-accent" />
+                      Anatomie d’une facture
                     </span>
-                    <span className="text-[0.7rem] text-white/50">mise à jour temps réel</span>
+                    <span className="text-[0.7rem] text-white/50">exemple PME · Tarif Jaune</span>
                   </div>
 
-                  <div className="mt-5 flex items-end justify-between gap-4">
-                    <div>
-                      <div className="text-white/55 text-xs">Économie annuelle estimée</div>
-                      <div className="mt-1 font-display font-extrabold text-4xl sm:text-5xl tracking-tight">
-                        <span className="gradient-text-bright">— 18 %</span>
-                      </div>
-                      <div className="mt-1 text-white/65 text-sm">sur votre facture électricité*</div>
-                    </div>
-                    <div className="hidden sm:flex flex-col items-end gap-1.5">
-                      {[72, 55, 48, 60, 40, 30].map((h, i) => (
-                        <div
-                          key={i}
-                          className="h-1.5 rounded-full bg-gradient-to-r from-primary/50 to-accent"
-                          style={{ width: `${h}px` }}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <h3 className="mt-4 font-display font-bold text-[1.2rem] sm:text-[1.35rem] leading-snug tracking-tight text-white max-w-sm">
+                    Là où se joue <span className="gradient-text-bright">réellement</span> votre budget électricité.
+                  </h3>
 
-                  <div className="mt-5 grid grid-cols-3 gap-2">
-                    {["Profil", "Marché", "Clauses"].map((l, i) => (
-                      <div
-                        key={l}
-                        className="rounded-xl bg-white/[0.04] border border-white/10 p-2.5"
-                      >
-                        <div className="h-1 rounded-full bg-white/10 overflow-hidden">
+                  <div className="mt-5 space-y-3.5">
+                    {[
+                      {
+                        label: "Part énergie",
+                        sub: "fourniture — négociable",
+                        pct: 45,
+                        highlight: true,
+                      },
+                      {
+                        label: "Acheminement",
+                        sub: "TURPE — régulé par la CRE",
+                        pct: 28,
+                        highlight: false,
+                      },
+                      {
+                        label: "Taxes & TVA",
+                        sub: "CSPE, CTA, TVA — fixes",
+                        pct: 27,
+                        highlight: false,
+                      },
+                    ].map((row) => (
+                      <div key={row.label}>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <span
+                              className={`font-semibold text-[0.88rem] truncate ${
+                                row.highlight ? "text-white" : "text-white/75"
+                              }`}
+                            >
+                              {row.label}
+                            </span>
+                            <span className="text-[0.72rem] text-white/45 truncate hidden sm:inline">
+                              — {row.sub}
+                            </span>
+                          </div>
+                          <span
+                            className={`font-display font-bold tabular-nums ${
+                              row.highlight ? "text-white text-lg" : "text-white/70 text-base"
+                            }`}
+                          >
+                            {row.pct}%
+                          </span>
+                        </div>
+                        <div className="mt-1.5 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-primary to-accent"
-                            style={{ width: `${[100, 80, 65][i]}%` }}
+                            className={`h-full rounded-full transition-all ${
+                              row.highlight
+                                ? "bg-gradient-to-r from-primary to-accent"
+                                : "bg-white/20"
+                            }`}
+                            style={{ width: `${row.pct}%` }}
                           />
                         </div>
-                        <div className="mt-1.5 text-[0.68rem] text-white/55">{l}</div>
                       </div>
                     ))}
                   </div>
 
-                  <p className="mt-5 text-[0.7rem] text-white/40 leading-relaxed">
-                    *Indicatif — varie selon votre profil de consommation et le contrat signé.
-                  </p>
+                  <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-accent/20 bg-accent/[0.06] px-3.5 py-3">
+                    <span className="flex-shrink-0 mt-0.5 w-1.5 h-1.5 rounded-full bg-accent" />
+                    <p className="text-[0.8rem] text-white/80 leading-relaxed">
+                      Seule la <strong className="text-white font-semibold">part énergie</strong>{" "}
+                      varie d’un fournisseur à l’autre. C’est là que notre mise en concurrence
+                      crée de la valeur — le reste est contraint.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Mini price card */}
@@ -221,7 +255,7 @@ export default function HomePage() {
           <div className="mt-14 space-y-6">
             {/* Big card full width */}
             <AnimateOnScroll>
-              <div className="relative overflow-hidden rounded-3xl bg-ink text-white p-8 lg:p-12 grain">
+              <div className="relative overflow-hidden rounded-3xl bg-ink text-white p-6 sm:p-8 lg:p-12 grain">
                 <div className="absolute inset-0 grid-lines opacity-40" aria-hidden />
                 <div className="absolute -top-20 -right-20 w-[360px] h-[360px] rounded-full bg-accent/25 blur-3xl" />
                 <div className="absolute -bottom-24 -left-24 w-[320px] h-[320px] rounded-full bg-primary/30 blur-3xl" />
@@ -425,7 +459,7 @@ export default function HomePage() {
               <div className="absolute -inset-6 bg-gradient-to-br from-primary/15 to-accent/15 rounded-3xl blur-2xl" />
               <div className="relative">
                 <MiniPriceCard />
-                <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="card-elevated p-4">
                     <div className="text-[0.72rem] uppercase tracking-wide text-text-muted font-semibold">
                       TRV Bleu pro
@@ -466,7 +500,7 @@ export default function HomePage() {
             />
           </AnimateOnScroll>
 
-          <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 auto-rows-[180px] lg:auto-rows-[200px] gap-4">
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] sm:auto-rows-[180px] lg:auto-rows-[200px] gap-4">
             {sectors.slice(0, 6).map((sec, i) => {
               const icons = [Store, Store, Building2, Building2, Factory, Factory];
               const Icon = icons[i];
@@ -477,7 +511,7 @@ export default function HomePage() {
                   delay={i * 40}
                   className={
                     isLarge
-                      ? "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2"
+                      ? "sm:col-span-2 sm:row-span-2"
                       : "col-span-1 row-span-1"
                   }
                 >
@@ -525,7 +559,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <Quote
-              className="absolute -top-8 -left-4 w-20 h-20 text-primary/10"
+              className="absolute -top-6 -left-2 w-14 h-14 sm:-top-8 sm:-left-4 sm:w-20 sm:h-20 text-primary/10"
               aria-hidden
             />
             <blockquote className="relative">
@@ -557,49 +591,137 @@ export default function HomePage() {
 
       {/* ─────────────── FINAL CTA ─────────────── */}
       <section className="relative overflow-hidden py-20 lg:py-28 bg-ink text-white grain isolate">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-[140px]" />
+        <div className="absolute inset-0 -z-10 opacity-60">
+          <div className="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full bg-primary/25 blur-[140px]" />
+          <div className="absolute -bottom-24 -right-24 w-[520px] h-[520px] rounded-full bg-accent/25 blur-[140px]" />
         </div>
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="chip bg-white/10 border border-white/15 text-white/85">
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
-            Prêt à comparer ?
-          </span>
-          <h2 className="mt-6 font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.6rem] tracking-tight leading-[1.05]">
-            Une étude gratuite, concrète.
-            <br />
-            <span className="gradient-text-bright">Un budget énergie maîtrisé.</span>
-          </h2>
-          <p className="mt-6 text-white/65 max-w-2xl mx-auto text-[1.05rem] leading-relaxed">
-            Transmettez-nous vos dernières factures : nous revenons vers vous sous 48 h
-            avec un comparatif clair et des recommandations actionnables.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href="/contact" size="lg">
-              Lancer mon étude
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <a
-              href={company.phoneTel}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-7 py-4 text-[1rem] font-semibold text-white hover:bg-white/10 transition-all"
-            >
-              <Headphones className="w-4 h-4 text-accent" />
-              {company.phoneDisplay}
-            </a>
-          </div>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-white/55">
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-              Sans engagement
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-              RGPD-compatible
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-              Réponse sous 48 h
-            </span>
+        <div className="absolute inset-0 -z-10 grid-lines opacity-[0.08]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* ── Message & CTA ───────────────── */}
+            <div className="lg:col-span-7">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-white/70 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                Étude gratuite · réponse sous 48&nbsp;h ouvrées
+              </span>
+
+              <h2 className="mt-7 font-display font-extrabold text-3xl sm:text-4xl lg:text-[3.6rem] tracking-tight leading-tight sm:leading-[1.04]">
+                Un diagnostic énergie <span className="gradient-text-bright">sérieux</span>,
+                <br className="hidden sm:block" /> livré par un courtier <span className="gradient-text-bright">indépendant</span>.
+              </h2>
+
+              <p className="mt-6 text-white/70 max-w-xl text-[1.05rem] leading-relaxed">
+                Nous auditons vos factures, challengeons huit fournisseurs sur votre profil
+                de consommation réel et vous remettons un livrable chiffré. Vous décidez
+                ensuite — aucun contrat n&apos;est signé sans votre validation écrite.
+              </p>
+
+              <div className="mt-9 flex flex-col sm:flex-row gap-3">
+                <Button href="/contact" size="lg">
+                  Lancer mon étude
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <a
+                  href={company.phoneTel}
+                  className="inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 rounded-xl border border-white/20 bg-white/[0.04] px-5 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-[1rem] font-semibold text-white hover:bg-white/10 hover:border-white/30 transition-all text-center"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <Headphones className="w-4 h-4 text-accent" />
+                    Parler à un conseiller
+                  </span>
+                  <span className="hidden sm:inline text-white/40">·</span>
+                  <span className="tabular-nums">{company.phoneDisplay}</span>
+                </a>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.82rem] text-white/55">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-accent" />
+                  Mandat révocable à tout moment
+                </span>
+                <span className="hidden sm:inline text-white/20">·</span>
+                <span className="inline-flex items-center gap-2">
+                  <Lock className="w-4 h-4 text-accent" />
+                  Données traitées en France, RGPD
+                </span>
+                <span className="hidden sm:inline text-white/20">·</span>
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-accent" />
+                  Zéro démarchage après l&apos;étude
+                </span>
+              </div>
+            </div>
+
+            {/* ── Deliverable card ─────────────── */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-7 lg:p-8 backdrop-blur-sm shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
+                <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+
+                <div className="flex items-center justify-between">
+                  <span className="text-[0.7rem] uppercase tracking-[0.16em] text-white/50 font-medium">
+                    Ce que vous recevez
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[0.68rem] font-semibold text-accent">
+                    <FileSignature className="w-3 h-3" />
+                    Livrable PDF
+                  </span>
+                </div>
+
+                <h3 className="mt-3 font-display text-xl font-bold text-white">
+                  Votre dossier énergie, prêt à décision.
+                </h3>
+
+                <ul className="mt-6 space-y-4">
+                  {[
+                    {
+                      icon: FileSearch,
+                      title: "Audit de facture détaillé",
+                      text: "PDL, CAR, taxes, options tarifaires : chaque ligne décryptée.",
+                    },
+                    {
+                      icon: LineChart,
+                      title: "Comparatif 8+ fournisseurs",
+                      text: "Offres cadrées sur votre profil de consommation réel.",
+                    },
+                    {
+                      icon: TrendingDown,
+                      title: "Économie chiffrée 12 et 36 mois",
+                      text: "Scénarios prudent, médian, optimiste — avec hypothèses.",
+                    },
+                    {
+                      icon: ClipboardCheck,
+                      title: "Clauses à négocier identifiées",
+                      text: "Indexation, fenêtres de sortie, pénalités, garanties d’origine.",
+                    },
+                  ].map((item) => (
+                    <li key={item.title} className="flex items-start gap-3.5">
+                      <span className="flex-shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.06] border border-white/10 text-accent">
+                        <item.icon className="w-4 h-4" />
+                      </span>
+                      <div>
+                        <div className="font-semibold text-[0.95rem] text-white">
+                          {item.title}
+                        </div>
+                        <div className="text-[0.82rem] text-white/55 leading-relaxed">
+                          {item.text}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 pt-5 border-t border-white/10 flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm">
+                    EA
+                  </div>
+                  <div className="text-[0.82rem] leading-tight">
+                    <div className="text-white/80 font-medium">Remis par votre conseiller dédié</div>
+                    <div className="text-white/45">Basé à {company.city} · équipe en propre</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -126,7 +126,7 @@ export default function ServicesPage() {
                           <Icon className="w-10 h-10" />
                         </span>
                       </div>
-                      <div className="mt-6 grid grid-cols-3 gap-2">
+                      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
                         {["Profil", "Marché", "Contrat"].map((l, j) => (
                           <div
                             key={l}

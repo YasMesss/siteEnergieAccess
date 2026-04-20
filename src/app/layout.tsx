@@ -120,7 +120,11 @@ export default function RootLayout({
         {children}
         <Footer />
         <MobileStickyBar />
-        <div className="h-16 lg:hidden" />
+        <div
+          className="lg:hidden"
+          style={{ height: "calc(5rem + env(safe-area-inset-bottom))" }}
+          aria-hidden
+        />
         <LazyOverlays />
       </body>
     </html>
