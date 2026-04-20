@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-04-20T12:00:00.000Z",
+  "disclaimer": "Indicateurs à titre informatif. Les prix du marché varient en temps réel ; une étude sur facture reste indispensable pour votre entreprise.",
+  "sources": [
+    "Séries indicatives dérivées des tendances marché (day-ahead) et des publications CRE / data.gouv.fr — à actualiser régulièrement."
+  ],
+  "spotEurMwh": [72.4, 68.1, 71.3, 69.8, 74.2, 70.5, 67.9],
+  "labels": ["14 avr.", "15 avr.", "16 avr.", "17 avr.", "18 avr.", "19 avr.", "20 avr."],
+  "variationPctVsWeek": -3.2,
+  "trvProElectricityNote": "Les tarifs réglementés de vente (TRV) pour les professionnels évoluent selon la CRE. Demandez une analyse personnalisée.",
+  "arenhNote": "Le volume ARENH et son prix plafond influencent les offres fournisseurs — impact variable selon profil de consommation."
+}

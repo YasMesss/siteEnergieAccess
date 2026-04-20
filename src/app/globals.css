@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1d4ed8;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #060a17;
+  --color-ink: #060a17;
+  --color-accent: #10b981;
+  --color-accent-hover: #059669;
+  --color-signal: #14b8a6;
+  --color-highlight: #facc15;
+  --color-bg-alt: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-text: #0a0f1c;
+  --color-text-light: #5b6478;
+  --color-text-muted: #8a91a3;
+  --color-line: #e6eaf2;
+  --color-success: #10b981;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--color-text);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Headings : typo éditoriale très resserrée */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+/* -------- Surfaces & effets -------- */
+
+.glass {
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 30px 60px -25px rgba(6, 10, 23, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-elevated {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 rgba(10, 15, 28, 0.04), 0 24px 48px -24px rgba(10, 15, 28, 0.12);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card-elevated:hover {
+  transform: translateY(-4px);
+  border-color: rgba(29, 78, 216, 0.18);
+  box-shadow: 0 1px 0 rgba(10, 15, 28, 0.04), 0 40px 70px -30px rgba(29, 78, 216, 0.24);
+}
+
+.soft-divider {
+  background: linear-gradient(90deg, transparent, var(--color-line), transparent);
+  height: 1px;
+}
+
+/* -------- Textures -------- */
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+}
+
+.grid-lines-light {
+  background-image: linear-gradient(rgba(10, 15, 28, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 15, 28, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+}
+
+.dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* -------- Text effects -------- */
+
+.gradient-text {
+  background: linear-gradient(100deg, #3b82f6 0%, #10b981 50%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-bright {
+  background: linear-gradient(100deg, #7dd3fc 0%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.headline-accent {
+  position: relative;
+  display: inline-block;
+}
+.headline-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.08em;
+  height: 0.35em;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.35), rgba(59, 130, 246, 0.35));
+  border-radius: 999px;
+  z-index: -1;
+}
+
+/* -------- Mesh blobs -------- */
+
+@keyframes mesh-move-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(40px, -60px, 0) scale(1.08); }
+}
+@keyframes mesh-move-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-50px, 40px, 0) scale(1.06); }
+}
+@keyframes mesh-move-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, 30px, 0) scale(0.95); }
+}
+.mesh-blob-1 { animation: mesh-move-1 22s ease-in-out infinite; }
+.mesh-blob-2 { animation: mesh-move-2 26s ease-in-out infinite; }
+.mesh-blob-3 { animation: mesh-move-3 20s ease-in-out infinite; }
+
+/* -------- Buttons -------- */
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -40%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  transition: left 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-shine:hover::after {
+  inset: 0 -40% 0 auto;
+}
+
+.ring-glow {
+  box-shadow: 0 0 0 6px rgba(29, 78, 216, 0.08), 0 0 0 1px rgba(29, 78, 216, 0.25);
+}
+
+/* -------- Marquee -------- */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+/* -------- Reveal animations -------- */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in-up { animation: fade-in-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.animate-fade-in { animation: fade-in 0.6s ease-out forwards; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.6); }
+}
+.pulse-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: currentColor;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* -------- Blog prose -------- */
+
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-top: 2.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.blog-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.blog-content p {
+  color: var(--color-text-light);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  font-size: 1.02rem;
+}
+
+.blog-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+.blog-content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+.blog-content strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* -------- Utility: number label -------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* -------- Scrollbar discrète -------- */
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(10, 15, 28, 0.15); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(10, 15, 28, 0.3); }
+}
