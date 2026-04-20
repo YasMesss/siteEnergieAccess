@@ -33,10 +33,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       <div
-        className={`transition-all duration-300 ${
+        className={`transition-all duration-300 bg-white ${
           isScrolled
-            ? "bg-white/85 backdrop-blur-xl shadow-[0_10px_30px_-20px_rgba(10,15,28,0.25)] border-b border-line"
-            : "bg-white/95 backdrop-blur-md border-b border-transparent"
+            ? "shadow-[0_8px_24px_-16px_rgba(10,15,28,0.18)] border-b border-line"
+            : "border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
